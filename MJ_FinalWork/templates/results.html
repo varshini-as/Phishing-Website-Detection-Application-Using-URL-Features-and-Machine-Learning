@@ -1,0 +1,68 @@
+<html>
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Phishing Detection</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
+    <!-- <link href="{{url_for('static', filename='style.css')}}" rel="stylesheet" type="text/css" /> -->
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark text-light bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="{{ url_for('index') }}"><img src="{{url_for('static', filename='img/1.png')}}"></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="{{ url_for('index') }}">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('catch_phish') }}">Catch a Phish!</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="bg-image" style="
+              background-image: url('/static/img/bg.jpg');
+			  background-repeat: no-repeat;
+              background-attachment:fixed;
+			  background-size: cover;
+            ">
+        <main>
+            <div class="container py-4">
+
+                <center>
+                    <div class="p-5 mb-4 text-white bg-dark rounded-3" style="width: 60%; margin-top: 5%;">
+                        <div class="container-fluid py-5">
+                            <label>Entered URL:</label>
+                            <input type="text" disabled value="{{url}}" style="width: 60%">
+                            <br>
+                            <p>Classified as: {{ res }}</p>
+                            {% if res == "Legitimate" %}
+                            <img src="/static/img/legitimate.png" alt="verified" style="margin-bottom: 7px;">
+                            &nbsp
+                            <h3>This site seems safe. Happy browsing!</h3>
+                            {% elif res == "Phishy" %}
+                            <img src="/static/img/danger.png" alt="phishy" style="margin-bottom: 7px;">
+                            <h3>Uh-oh. According to our analysis, this site seems suspicious. </h3>
+                            {% endif %}
+                        </div>
+                    </div>
+                </center>
+
+
+                <footer class="pt-3 mt-4 border-top text-white " style="bottom:10px; left:0; position: absolute; width: 100%; opacity: 1;">
+                    &copy; CatchPhish 2022
+                </footer>
+            </div>
+        </main>
+    </div>
+  </body>
+</html>

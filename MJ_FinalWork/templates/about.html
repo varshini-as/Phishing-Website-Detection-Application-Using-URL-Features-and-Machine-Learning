@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Phishing Detection</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"/>
+        <link href="{{url_for('static', filename='style.css')}}" rel="stylesheet" type="text/css" />
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+    </head>
+    <body>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark text-white">
+            <div class="container-fluid">
+              <a class="navbar-brand" href="{{ url_for('index') }}"><img src="{{url_for('static', filename='img/1.png')}}"></a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                  <li class="nav-item">
+                    <a class="nav-link text-white" aria-current="page" href="#">Home</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link text-white" href="{{ url_for('catch_phish') }}">Catch a Phish!</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </nav>
+          <div style="background-image: url('/static/img/bg.jpg'); background-repeat: no-repeat;
+              background-attachment:fixed;
+			  background-size: cover;">
+            <main>
+              <div class="container py-4">
+            
+                <div class="p-5 mb-4 bg-light rounded-3">
+                  <div class="container-fluid py-5" >
+                    <h1 class="display-5 fw-bold">Phishing Detection page using Machine Learning and Blacklist Approach</h1>
+                    <div style="display: flex; align-items: center;
+                    justify-content: center">
+                      <p class="col-md-8 fs-4" style="margin-left: -1%;">The objective of this application is to improve on existing phishing detection techniques by creating and training machine learning models that distinguish suspicious URLs from valid ones based on URL features.</p>
+                      <img src="{{url_for('static', filename='img/main (2).png')}}" alt="phishing" style="height: 155px;">
+                    </div>
+    
+                    <button class="btn btn-primary btn-lg" type="button" onclick="window.location.href='{{ url_for( 'catch_phish') }}';">Catch a Phish!</button>
+                  </div>
+                </div>
+            
+                <div class="row align-items-md-stretch">
+                  <div class="col-md-6">
+                    <div class="h-100 p-5 text-white bg-dark rounded-3" style="opacity: 0.8;">
+                      <h2>What is phishing?</h2>
+                      <p>Phishing is a type of cybersecurity attack during which malicious actors send messages pretending to be a trusted person or entity. </p>
+                      <p>Phishing attacks employ a variety of techniques such as link manipulation, filter evasion, website forgery, covert redirect, and social engineering. </p>
+                      <button class="btn btn-outline-secondary" type="button"><a href="https://www.phishing.org/what-is-phishing" target="_blank" style="text-decoration: none; color: white">Learn More</a></button>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="h-100 p-5 bg-light border rounded-3">
+                      <h2>Our Approach</h2>
+                      <p>To distinguish between suspicious and legal websites, we employ a Random Forest classifier. A blacklist is also being used by the website. When a user types in a URL, we employ a mix of both to verify its validity.</p>
+                      <p>Our classifier can identify phishy sites with nearly 92% accuracy. You can use <b>Catch Phish</b> to stay safe from phishing scams! </p>
+                    </div>
+                  </div>
+                </div>
+            
+                <footer class="pt-3 mt-4 text-muted border-top">
+                  &copy; 2022
+                </footer>
+              </div>
+            </main>
+          </div>
+    </body>
+</html>
